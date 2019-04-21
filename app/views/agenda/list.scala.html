@@ -1,0 +1,35 @@
+@(contatos: List[Contato])
+
+@header("Contatos"){
+	<h2>Lista de contatos</h2>
+
+	<a type="button" class="btn btn-success" href="@routes.AgendaController.contatoForm(null)">Adicionar Contato</a>
+	
+	<br/>
+	<br/>
+
+	<table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">Nome</th>
+	      <th scope="col">Endereco</th>
+	      <th scope="col">Telefone</th>
+	      <th scope="col">Deletar</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+
+	 
+	@for(contato <- contatos){
+		<tr>
+		    <td><a href="@routes.AgendaController.contatoForm(contato.getNome())">@contato.getNome()</td>
+		    <td>@contato.getEndereco()</td>
+		    <td>@contato.getTelefone()</td>
+		    <td><a class="btn btn-danger" href="@routes.AgendaController.deletar(contato.getNome())">Deletar</a></td>
+		</tr>
+	}
+	  
+	  </tbody>
+
+	</table>
+}

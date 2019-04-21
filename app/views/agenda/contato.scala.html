@@ -1,0 +1,30 @@
+@(contato: Contato)
+
+@header("Contatos"){
+	<h2>Contato:</h2>
+
+	 <form action="@routes.AgendaController.salvar(contato.getNome())" method="POST">
+	  <fieldset>
+
+	  	@if(contato.getNome() == ""){
+	  		<legend>Novo Contato</legend>
+	  	} else {
+	  		<legend>@contato.getNome()</legend>
+	  	}
+	    
+
+	    <label for="nome">Nome:</label>
+	    <input type="text" id="nome" name="nome" placeholder="Nome" value="@contato.getNome()" required><br>
+
+	    <label for="endereco">Endereço:</label>
+	    <input type="text" id="endereco" name="endereco" placeholder="Endereço" value="@contato.getEndereco()"required><br>
+
+	    <label for="telefone">Telefone:</label>
+	    <input type="tel" id="telefone" name="telefone" placeholder="Telefone" value="@contato.getTelefone()" required><br>
+
+	    <input type="submit" class="btn btn-success" value="Salvar">
+	    <a class="btn btn-danger" href="@routes.AgendaController.list()">Cancelar</a>
+	  </fieldset>
+	</form>
+
+}
